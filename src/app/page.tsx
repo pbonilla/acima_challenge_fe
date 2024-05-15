@@ -3,7 +3,7 @@ import React from 'react';
 import useHttpRequest from '../hooks/useHttpRequest';
 import { parseHtmlToObject } from '../services/dataParser';
 import Calculator from '../components/calculator';
-import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 
 export default function Home() {
   const { data, loading } = useHttpRequest('http://localhost:3000/export');
@@ -16,14 +16,17 @@ export default function Home() {
       <>
         <h1>Ledger Calculator</h1>
         <hr />
-        <Grid container>
-          <Grid item xs={12} sm={2}>
+        <Stack
+          direction={{ xs: 'column', sm: 'row'}}
+          spacing={{ xs: 3, sm: 12}}
+        >
+          <div>
               <div dangerouslySetInnerHTML={{ __html: data }} />
-          </Grid>
-          <Grid item xs={12} sm={4}>
-              <Calculator />
-          </Grid>
-        </Grid>
+          </div>
+          <div>
+              <Calculator itemsData={parsedData}/>
+          </div>
+        </Stack>
       </>
     );
 }
