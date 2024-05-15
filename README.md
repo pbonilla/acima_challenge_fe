@@ -30,6 +30,8 @@ For general purposes, it is just processing two operands at this moment. But, id
 
 It is a React application mounted on Next.js that is using Typescript on the majority of the files. As a CSS Framework, Material UI was added to the project in order to take advantage of their UI components.
 
+This application was developed and tested against NodeJS v20.
+
 In order to install the packages required for the application, you can run:
 
 ```
