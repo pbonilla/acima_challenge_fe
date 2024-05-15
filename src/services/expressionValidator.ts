@@ -2,44 +2,44 @@ import { OPERATORS, OPERANDS } from '../constants';
 
 const escapedOperators = OPERATORS.map((operator) => `\\${operator}`);
 
-function validationResult(result, errorMessage = ''){
+function validationResult(result : boolean, errorMessage : string = ''){
   return {result, errorMessage };
 }
 
-function hasInvalidEntries(expression){
+function hasInvalidEntries(expression : string){
   const regexPattern = new RegExp(`[^((${OPERANDS.join("|")})|(${escapedOperators.join("|")}))]`, 'gi');
   return expression.match(regexPattern);
 }
 
-function hasWhiteSpaces(expression){
+function hasWhiteSpaces(expression: string){
   const regexPattern = new RegExp(/\s+/, 'gi');
   return expression.match(regexPattern);
 }
 
-function hasMoreThanOneOperandTogether(expression){
+function hasMoreThanOneOperandTogether(expression : string){
   const regexPattern = new RegExp(`(${OPERANDS.join('|')})(${OPERANDS.join('|')})`, 'gi');
   return expression.match(regexPattern);
 }
 
-function hasMoreThanOneOperatorTogether(expression){
+function hasMoreThanOneOperatorTogether(expression : string){
   const regexPattern = new RegExp(`(${escapedOperators.join("|")})(${escapedOperators.join("|")})`, 'gi');
   return expression.match(regexPattern);
 }
 
-function hasMoreThanTwoOperands(expression){
+function hasMoreThanTwoOperands(expression : string){
   return expression.length > 3;
 }
 
-function hasOnlyOneOperandAndOperator(expression){
+function hasOnlyOneOperandAndOperator(expression : string){
   return expression.length == 2;
 }
 
-function hasOnlyOneOperator(expression){
+function hasOnlyOneOperator(expression : string){
   const regexPattern = new RegExp(`${escapedOperators.join('|')}`, 'gi');
   return expression.length == 1 && expression.match(regexPattern);
 }
 
-export function validateExpression(expression){
+export function validateExpression(expression : string){
   if(expression.length === 0) return validationResult(true);
 
   if(hasWhiteSpaces(expression)){

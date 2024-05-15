@@ -5,18 +5,19 @@ import { validateExpression } from '../services/expressionValidator';
 import Stack from '@mui/material/Stack';
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import { Item, ItemsObject } from '../types';
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
-function totalByDataSet(dataSet, operator, initialValue = 0){
+function totalByDataSet(dataSet : Item[], operator : string, initialValue : number = 0 ){
   return dataSet.reduce((res, item) => {
     res = eval(`${item.price}${operator}${res}`);
     return res;
   }, initialValue)
 }
 
-function calculateResult(itemsData, expression){
+function calculateResult(itemsData : ItemsObject, expression: string){
   const expressionParts = expression.split('');
   if(expressionParts.length === 1){
     const operand = expressionParts[0].toUpperCase();
@@ -44,7 +45,7 @@ function calculateResult(itemsData, expression){
   }  
 }
 
-function Calculator({ itemsData }){
+function Calculator({ itemsData } : { itemsData : ItemsObject}){
   const [expression, setExpression] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isExpressionValid, setIsExpressionValid] = useState(true);

@@ -9,7 +9,7 @@ export default function Home() {
   const { data, loading } = useHttpRequest('http://localhost:3000/export');
   if (loading) return <div>Loading...</div>;
   
-  const parsedData = parseHtmlToObject(data);
+  const parsedData = parseHtmlToObject(data || '');
   
   if(data)
     return (
