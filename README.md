@@ -14,23 +14,30 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## About the React application
 
-## Learn More
+The main goal of this project has been to cover a coding challenge requested during a recruitment process.
 
-To learn more about Next.js, take a look at the following resources:
+The application will be consuming a NodeJS API created with Express. For more information, you can visit this public repository [https://github.com/pbonilla/acima_challenge_be](https://github.com/pbonilla/acima_challenge_be).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project is a calculator that is gathering the data from an encoded base64 HTML string.
+The calculator supports the addition, substraction, multiplication and division.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+For general purposes, it is just processing two operands at this moment. But, ideally this project will be refactored to include new Math operations and will handle multiple operands.
 
-## Deploy on Vercel
+It is a React application mounted on Next.js that is using Typescript on the majority of the files. As a CSS Framework, Material UI was added to the project in order to take advantage of their UI components.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+In order to install the packages required for the application, you can run:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm install
+```
+
+Also, Jest has been added as the library for unit tests. For now, there are just examples for a service that is validating the expressions against some basic rules. To run the test suite, you can run:
+
+```
+npm test
+```
